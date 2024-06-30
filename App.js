@@ -1,21 +1,17 @@
-import React from 'react';
-import Header from './components/Header';
-import About from './components/About';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import React, { useState } from 'react';
+import Modal from './Modal';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="App">
-      <Header />
-      <main>
-        <About />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
+      <header className="App-header">
+        <h1>Welcome to My Portfolio</h1>
+        <button onClick={() => setShowModal(true)}>Show More</button>
+        {showModal && <Modal onClose={() => setShowModal(false)} />}
+      </header>
     </div>
   );
 }
